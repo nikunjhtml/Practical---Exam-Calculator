@@ -7,6 +7,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
 }
+
 .calculator {
     background: #fff;
     border-radius: 8px;
@@ -14,6 +15,7 @@ body {
     padding: 20px;
     width: 320px;
 }
+
 .display {
     background: #eaeaea;
     border: none;
@@ -24,11 +26,13 @@ body {
     text-align: right;
     margin-bottom: 10px;
 }
+
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
+
 button {
     padding: 15px;
     font-size: 1.2rem;
@@ -39,29 +43,37 @@ button {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
+
 button:hover {
     background: #1976da;
     transform: scale(1.05);
 }
+
 .big {
     grid-column: span 2;
 }
+
 .big-vertical {
     grid-row: span 2;
     height: 100%;
 }
+
 .red {
     background: #dc3545;
 }
+
 .red:hover {
     background: #c82333;
 }
+
 .green {
     background: #28a745;
 }
+
 .green:hover {
     background: #218838;
 }
+
 .history {
     margin-top: 20px;
     max-height: 150px;
@@ -69,6 +81,7 @@ button:hover {
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
+
 .history-item {
     font-size: 0.9rem;
     color: #555;

@@ -30,12 +30,14 @@ function calculateResult() {
             result = previousValue * currentValue;
             break;
         case "/":
-            result = previousValue / currentValue;
+            result = currentValue === 0 ? "Error" : previousValue / currentValue;
             break;
         default:
             return;
     }
-    addToHistory(`${previousValue} ${operation} ${currentValue} = ${result}`);
+    if (result !== "Error") {
+        addToHistory(`${previousValue} ${operation} ${currentValue} = ${result}`);
+    }
     displayValue = result;
     operation = null;
     previousValue = null;
@@ -44,13 +46,18 @@ function calculateResult() {
 
 function calculatePercentage() {
     if (displayValue === "") return;
-    displayValue = parseFloat(displayValue) / 100;
+    displayValue = (parseFloat(displayValue) / 100).toString();
     updateDisplay();
 }
 
 function calculateSquareRoot() {
     if (displayValue === "") return;
-    displayValue = Math.sqrt(parseFloat(displayValue));
+    const value = parseFloat(displayValue);
+    if (value < 0) {
+        displayValue = "Error";
+    } else {
+        displayValue = Math.sqrt(value).toString();
+    }
     updateDisplay();
 }
 
@@ -59,11 +66,12 @@ function clearDisplay() {
     updateDisplay();
 }
 
-function clearAll() {
-    clearDisplay();
+function clearEverything() {
+    displayValue = "";
     operation = null;
     previousValue = null;
-    document.getElementById("history").innerHTML = "";
+    document.getElementById("history").innerHTML = ""; // Clear history
+    updateDisplay();
 }
 
 function updateDisplay() {
